@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<a href="#" onclick="history.back();" class="btn">
+  <i class="fas fa-arrow-left"></i>
+  <span class="sr-only">Retour</span>
+</a>
+<style>
+  .card-img-top:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+  }
+</style>
+
+<div class="row my-5 d-flex justify-content-center">
+  <div class="col-md-10">
+      <div class="row">
+          {% if product %}
+              <div class="col-md-6">
+                  <div class="card">
+                          <img src="{{asset('/images/' ~ product.brochureFilename)}}" 
+                              alt="{{product.name}}" 
+                              height="400"
+                              width="600"
+                              class="card-img-top">
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card">
+                      <div class="card-header d-flex justify-content-between align-items-center">
+                          <h5 >product info</h5>
+                      </div>
+                      <div class="card-body">
+                          <h4 class="card-title">{{product.name}}</h4>
+                          <p class="card-text">{{product.description}}</p>
+                          <h5><span class="text text-danger">{{product.price}} $</span></h5>
+                          <h5><span class="text text-success">{{product.category.name}}</span></h5><br> 
+                      </div>
+                      <div class="card-footer">
+                          <form id ="{{product.id}}" action="{{path('product_delete',{id:product.id})}}" method="post"></form>
+                          <button onclick="" class="btn btn-info btn-lg w-100">Buy product</button>
+                      </div>
+                  </div>
+              </div>
+          {% else %}
+              <div class="alert alert-info">
+                  No product found!
+              </div>
+          {% endif %}
+      </div>
+  </div>
+</div>
+{% endblock %}

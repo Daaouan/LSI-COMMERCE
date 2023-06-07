@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OUKHA-SHOP - CONNEXION{% endblock %}
+
+{% block body %}
+<div class="container">
+<h1 class="mt-4">Formulaire de Connexion</h1>
+ {% if error %}
+    <div class="alert alert-dismissible alert-danger">
+ {{ error.messageKey|trans(error.messageData, 'security') }}
+</div>
+    {% endif %}
+{% for message in app.flashes('edited') %}
+     <div class="alert alert-success col no-padding">
+       {{ message }}
+      </div>
+ {% endfor %}
+{% for message in app.flashes('success') %}
+     <div class="alert alert-success">
+       {{ message }}
+      </div>
+ {% endfor %}
+{% for message in app.flashes('danger') %}
+ <div class="alert alert-danger">
+ {{ message }}
+    </div>
+{% endfor %}
+<form action="{{path('security.login')}}" method="post">
+    <div class="form-group">
+      <label for="username" class="form-label mt-4">Adresse Email</label>
+      <input type="email" class="form-control" id="username" name="_username" placeholder="test@oukhashop.ma" value="{{last_username}}">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="password" class="form-label mt-4">Mot de passe</label>
+      <input type="password" class="form-control" id="password" name="_password" placeholder="*********">
+    </div>
+    <button  type="submit" class="btn btn-primary mt-4">Se Connecter</button>
+    <div>
+     <a href="{{path('security.registration')}}" class="btn btn-secondary mt-4">Créer Votre Compte</a>
+    </div>
+    <div>
+     <small id="registration_help" class="form-text text-muted">Pas de compte?</small>
+</div>
+
+</form> 
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block title %} Liste des Produits{% endblock %}
+{% block body %}
+
+<a href="#" onclick="history.back();" class="btn">
+    <i class="fas fa-arrow-left"></i>
+    <span class="sr-only">Retour</span>
+</a>
+<div class=" row no-padding">
+    <p class="alert alert-warning d-flex justify-content-center"><b>There are <strong style="color:#ff9966;">{{
+                products|length }}</strong> products in total! or non</b></p>
+</div>
+
+
+{% for message in app.flashes('edited') %}
+<div class="alert alert-success col no-padding">
+    {{ message }}
+</div>
+{% endfor %}
+{% for message in app.flashes('success') %}
+<div class="alert alert-success">
+    {{ message }}
+</div>
+{% endfor %}
+{% for message in app.flashes('danger') %}
+<div class="alert alert-danger">
+    {{ message }}
+</div>
+{% endfor %}
+
+{% if products %}
+
+<div id="products" class="table table-striped" style="display: flex; margin: 10px 10px 10px;">
+    {% for product in products %}
+    <div class="card" style="height: 400px; width: 400px; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-bottom: 1rem; margin: 10px 10px;">
+        <img class="card-img-top" style="width: 100%; height: 50%;" src="{{ asset('/images/' ~ product.brochureFilename) }}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title" style="font-size: 1.2rem; font-weight: bold;">{{ product.name}}</h5>
+            <p style="font-size: 1rem;">{{ product.description }}</p>
+            <b>{{product.price}} $</b> <br>
+            <div style="display: flex; justify-content: center; margin-bottom: 5px;">
+                <a href="/product/details/{{ product.id }}" class="btn btn-success">Details</a>
+             <!--   <a href="/product/edit/{{ product.id }}" class="btn btn-dark">Edit</a>-->
+                <!--      <a href="/product/delete/{{ product.id }}" class="btn btn-danger" onclick="return confirm('Do you want to delete {{ product.name }}?')">Delete</a>-->
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% else %}
+<p>Aucun produit</p>
+{% endif %}
+{% endblock %}
