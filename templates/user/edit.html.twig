@@ -8,22 +8,107 @@
   <span class="sr-only">Retour</span>
 </a>
 {% for message in app.flashes('edited') %}
-     <div class="alert alert-success col no-padding">
-       {{ message }}
-      </div>
- {% endfor %}
-{% for message in app.flashes('success') %}
-     <div class="alert alert-success">
-       {{ message }}
-      </div>
- {% endfor %}
-{% for message in app.flashes('danger') %}
- <div class="alert alert-danger">
- {{ message }}
-    </div>
-{% endfor %}
-<div class="container">
-<h1 class="mt-4">Formulaire de Modification</h1>
-{{form(form)}}
+<div class="alert alert-success col no-padding">
+  {{ message }}
 </div>
+{% endfor %}
+{% for message in app.flashes('success') %}
+<div class="alert alert-success">
+  {{ message }}
+</div>
+{% endfor %}
+{% for message in app.flashes('danger') %}
+<div class="alert alert-danger">
+  {{ message }}
+</div>
+{% endfor %}
+
+<div class="card" style="width: 80%; margin-left: 140px;">
+  <div class="card-header" style="background-color: #f8f9fa; font-weight: bold; text-align: center;">
+    <h2>Profile</h2>
+  </div>
+  <div class="card-body">
+    {{ form_start(form) }}
+
+    <div class="form-group">
+      <label class="form-label" style="font-weight: bold;">{{ form_label(form.fullName, 'Full Name') }}</label>
+      {{ form_widget(form.fullName, {'attr': {'class': 'form-control'}}) }}
+      <div style="color: red;">{{ form_errors(form.fullName) }}</div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" style="font-weight: bold;">{{ form_label(form.email, 'Email') }}</label>
+      {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+      <div style="color: red;">{{ form_errors(form.email) }}</div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" style="font-weight: bold;">{{ form_label(form.pseudo, 'Username') }}</label>
+      {{ form_widget(form.pseudo, {'attr': {'class': 'form-control'}}) }}
+      <div style="color: red;">{{ form_errors(form.pseudo) }}</div>
+    </div>
+
+    <div class="form-group" style="margin-top: 20px;">
+      {{ form_widget(form.Submit, {'attr': {'class': 'btn btn-success'}}) }}
+    </div>
+
+    {{ form_end(form) }}
+  </div>
+</div>
+
+<div class="card" style="width: 80%; margin-left: 140px; margin-top: 50px; margin-bottom: 30px;">
+  <div class="card-header" style="background-color: #f8f9fa; font-weight: bold; text-align: center;">
+    <h2>Your products</h2>
+  </div>
+  <div class="card-body">
+    {% for message in app.flashes('edited') %}
+        <div class="alert alert-success col no-padding">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% if products %}
+        <table id="products" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Picture</th> <!-- Nouvelle colonne pour l'image -->
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }} Dhs</td>
+                    <td><img src="{{ asset('/images/' ~ product.brochureFilename) }}" width="50" height="50"></td> <!-- Affichage de l'image -->
+                    <!-- Affichage de l'image -->
+                    <td>
+                        <a href="/product/details/{{ product.id }}" class="btn btn-success">Details</a>
+                        <a href="/product/edit/{{ product.id }}" class="btn btn-dark">Edit</a>
+                        <a href="/product/delete/{{ product.id }}" class="btn btn-danger"
+                           onclick="return confirm('Do you want to delete {{ product.name }}?')">Delete</a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Aucun produit</p>
+    {% endif %}
+  </div>
+</div>
+
 {% endblock %}

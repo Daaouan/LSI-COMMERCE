@@ -49,6 +49,20 @@ class UserType extends AbstractType
                  new Assert\Length(['min'=>2 , 'max'=>50 ])
                 ]
             ])
+            ->add('email',TextType::class,[
+                'attr'=>[
+                    'class'=>'form-control',
+                    'minlenght'=>'2',
+                    'maxlenght'=>'50'
+                ],
+                'label'=>'email (Facultatif)',
+                'label_attr'=>[
+                    'class'=>'form_label'
+                ],
+                'constraints'=>[
+                 new Assert\Length(['min'=>2 , 'max'=>50 ])
+                ]
+            ])
 
             ->add('Submit',SubmitType::Class,[
                 'attr'=>[
