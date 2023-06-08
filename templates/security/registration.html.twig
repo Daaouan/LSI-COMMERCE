@@ -2,11 +2,17 @@
 {% block title %}OUKHA-SHOP - INSCRIPTION{% endblock %}
 {% block body %}
 <a href="#" onclick="history.back();" class="btn">
-  <i class="fas fa-arrow-left"></i>
-  <span class="sr-only">Retour</span>
+    <i class="fas fa-arrow-left"></i>
+    <span class="sr-only">Retour</span>
 </a>
-<div class="container">
-<h1 class="mt-4">Formulaire d'inscription</h1>
-{{form(form)}}
+
+<div class="card" style="height: 450px; width: 800px; margin-left: 400px; margin-top: 50px;">
+    <div class="card-header" style="background-color: #f8f9fa; font-weight: bold; text-align: center;">
+      <h2>SignUP</h2>  
+    </div>
+    <div class="container">
+        {{form(form)}}
+    </div>
 </div>
-{% endblock %}
+
+    {% endblock %}
