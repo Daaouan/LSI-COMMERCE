@@ -38,8 +38,14 @@
                           <h5><span class="text text-success">{{product.category.name}}</span></h5><br> 
                       </div>
                       <div class="card-footer">
-                          <form id ="{{product.id}}" action="{{path('product_delete',{id:product.id})}}" method="post"></form>
-                          <button onclick="" class="btn btn-info btn-lg w-100">Buy product</button>
+                          <form id ="{{product.id}}" action="/product/delete/{{product.id}}" method="post">
+                            <button  class="btn btn-danger btn-lg w-100">Delete</button>
+                          </form>
+                          <br>
+                          <form id ="{{product.id}}" action="/product/edit/{{ product.id }}" method="post">
+                            <button  class="btn btn-primary btn-lg w-100">Edit</button>
+                          </form>
+                          
                       </div>
                   </div>
               </div>

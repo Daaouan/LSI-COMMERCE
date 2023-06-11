@@ -10,12 +10,24 @@ use Symfony\Component\HttpFoundation\Request ;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\ProductRepository;
+use App\Repository\CategoryRepository;
 
 class CartController extends AbstractController
 {
+    private $ProductRepository;
+    private $CategoryRepository;
+
+    public function __construct(ProductRepository $ProductRepository,CategoryRepository $CategoryRepository){
+        $this->ProductRepository=$ProductRepository;
+        $this->CategoryRepository=$CategoryRepository;
+    }
+
     #[Route('/cart', name: 'app_cart')]
     public function index(EntityManagerInterface $entitymanager): Response
     {
+        $categories=$this->CategoryRepository->findAll();
+        $products=$this->ProductRepository->findAll();
         $cartItems = $entitymanager->getRepository(CartItem::class)->findBy(['user' => $this->getUser()]);
         if (!$cartItems) {
 //            throw $this->createNotFoundException(
@@ -25,7 +37,9 @@ class CartController extends AbstractController
 
         return $this->render('cart\index.html.twig', [
             'cart_items' => $cartItems,
-            'controller_name' => 'CartController'
+            'controller_name' => 'CartController',
+            'products' => $products,
+            'categories' => $categories,
         ]);
     }
 

@@ -60,7 +60,25 @@
                 <a href="/cart/empty" class="btn btn-danger" onclick="return confirm('Do you want to empty your cart?')">Empty cart</a>
             </div>
             <div class="m-1">
-                <a href="/cart/checkout" class="btn btn-success">Checkout</a>
+                <section class="checkout">
+
+                    <form action="{{path('app_checkout')}}" method="post">
+                {% for cart_item in cart_items %}
+                        <input type="hidden" name="amount" value={{ cart_item.product.price }}>
+                
+                        <input type="hidden" name="quantity" value={{ cart_item.quantity }}>
+                        <input type="hidden" name="name" value='{{ cart_item.product.name }}'>
+                
+                        
+                    {% endfor %}  
+                       <button type="submit" class="btn">
+                        
+                        <span class="btn btn-success">Checkout</span>
+                      
+                        </button>
+                    
+                    </form>
+          </section>
             </div>
         </div>
     {% else %}

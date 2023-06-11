@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="box-shadow: 0px 2px 5px rgba(0,0,0,0.5)">
+<nav class="navbar navbar-expand-sm navbar-primary bg-info" style="box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5)">
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
@@ -13,25 +13,23 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a href="{{ path('app_product') }}" class="nav-link">
-                        <i class="fas fa-shopping-basket"></i>
-                        All Products
+                       
+                     <b>All Products</b>   
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('app_category') }}" class="nav-link">
-                        <i class="fas fa-th-list"></i> All Categories
+                     <b>All Categories</b>    
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('new_product') }}" class="nav-link">
-                        <i class="fas fa-plus-square"></i>
-                        Add New Product
+                    <b>Add New Product</b>    
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ path('new_category') }}" class="nav-link">
-                        <i class="fas fa-plus-square"></i>
-                        Add New Category
+                     <b>Add New Category</b>   
                     </a>
                 </li>
           <!--      <li class="nav-item d-flex justify-content-end">
@@ -45,7 +43,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user-dropdown">
                         <a class="dropdown-item btn-dark" href="{{ path('user.edit', {'id': app.user.id}) }}"><i class="bi bi-person-lines-fill" style="margin-right: 10px;"></i>Profile</a>
-                        <a class="dropdown-item btn-dark" href="{{ path('home2') }}"><i class="bi bi-box-arrow-left" style="margin-right: 10px;"></i>Logout</a>
+                        <a class="dropdown-item btn-dark" href="{{ path('app_productb')}}"><i class="bi bi-box-arrow-left" style="margin-right: 10px;"></i>Logout</a>
                     </div>
                 </li>
 

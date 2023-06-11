@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\CartItem;
 use App\Entity\Product;
 use App\Form\ProductType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -12,9 +13,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use App\Repository\CartItemRepository ;
+
 
 class ProductController extends AbstractController
+    
 {
+    private $CartItemRepository;
+
+    public function __construct(CartItemRepository $CartItemRepository){
+        $this->CartItemRepository=$CartItemRepository;
+    }
+
     #[Route('/product', name: 'app_product')]
     public function index(EntityManagerInterface $entitymanager): Response
     {
@@ -151,21 +161,29 @@ class ProductController extends AbstractController
     }
 
     #[Route('/home', name: 'home')]
-    public function Home(): Response
+    public function Home(EntityManagerInterface $entityManager): Response
     {
+        
+        $products = $entityManager->getRepository(Product::class)->findBy(['user' => $this->getUser()]);
 
-        return $this->render('home.html.twig');
-
-
+        return $this->render('home.html.twig', [
+            'products' => $products,
+            'controller_name' => 'ProductController'
+        ]);
+       
     }
 
     #[Route('/home2', name: 'home2')]
-    public function Home2(): Response
+    public function Home2(EntityManagerInterface $entityManager): Response
     {
+        
+        $products = $entityManager->getRepository(Product::class)->findBy(['user' => $this->getUser()]);
 
-        return $this->render('home2.html.twig');
-
-
+        return $this->render('home2.html.twig', [
+            'products' => $products,
+            'controller_name' => 'ProductController'
+        ]);
+       
     }
 
     #[Route('/product/details/{id}', name: 'details')]
