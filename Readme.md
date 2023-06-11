@@ -20,10 +20,10 @@ The following individuals have contributed to the development of this applicatio
 - [DAAOUAN MOHAMMED](https://github.com/Daaouan-Mohammed)
 
 ## Some Screenshots
-<img src="https://github.com/Frikh-Said/LSI-COMMERCE/assets/123327203/af66ce15-0b07-428d-9233-64719c36e5e2" alt="Screenshot 1" width="400" height="300" />
-<img src="https://github.com/Frikh-Said/LSI-COMMERCE/assets/123327203/769e8959-7db8-479e-b050-3af7e72c05e5" alt="Screenshot 2" width="400" height="300" />
-<img src="https://github.com/Frikh-Said/LSI-COMMERCE/assets/123327203/2aa5c895-1856-4541-bf4f-4a3b9530a648" alt="Screenshot 3" width="400" height="300" />
-<img src="https://github.com/Frikh-Said/LSI-COMMERCE/assets/123327203/dadb790f-8080-4510-9bf0-0f65eb9b74cb" alt="Screenshot 4" width="400" height="300" />
+<img src="https://github.com/Frikh-Said/LSI-COMMERCE/assets/123327203/af66ce15-0b07-428d-9233-64719c36e5e2" alt="Screenshot 1" width="500" height="300" />
+<img src="https://github.com/Frikh-Said/LSI-COMMERCE/assets/123327203/769e8959-7db8-479e-b050-3af7e72c05e5" alt="Screenshot 2" width="500" height="300" />
+<img src="https://github.com/Frikh-Said/LSI-COMMERCE/assets/123327203/2aa5c895-1856-4541-bf4f-4a3b9530a648" alt="Screenshot 3" width="500" height="300" />
+<img src="https://github.com/Frikh-Said/LSI-COMMERCE/assets/123327203/dadb790f-8080-4510-9bf0-0f65eb9b74cb" alt="Screenshot 4" width="500" height="300" />
 
 
 ## How to Use
